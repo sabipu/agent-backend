@@ -1,0 +1,35 @@
+include _docheader
+include _style
+include _header
+block content
+  - const firstname = data.firstName;
+  - const activatelink = data.activateLink;
+table(cellpadding='0' cellspacing='0' border='0' align='center' width='640' style='width: 640px;' role='presentation' bgcolor='#FFFFFF')
+  tbody
+    tr
+      td.table-container.mobile-title(align='left' style="color:#45535C;padding:20px 40px 0 40px;font-family: 'Lato', Arial, Helvetica, sans-serif;font-weight:800;font-size:24px;-webkit-font-smoothing:antialiased;line-height:1.2;")
+        | Hi #{firstname}!
+    tr
+      td.table-container(align='left' style="color:#5a5a5a;padding:20px 40px 0 40px;font-family: 'Lato', Arial, Helvetica, sans-serif;font-weight:normal;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;")
+        | Welcome to alpha platform. Click on the button below to activate your account. This link will expire in 24 hours.
+    tr
+      td.table-container(align='left' style='padding:40px 40px 10px 40px;')
+        //if mso
+          v:roundrect(xmlns:v='urn:schemas-microsoft-com:vml' xmlns:w='urn:schemas-microsoft-com:office:word' href='https://www.mailersend.com/' style='height: 40px; v-text-anchor: middle; width: 250px;' arcsize='13%' stroke='f' fillcolor='#ff5746')
+            w:anchorlock
+              center
+        a(href=activatelink style="background-color: #ff5746; color: #ffffff; display: inline-block;font-family: 'Lato', Arial, Helvetica, sans-serif; font-size: 16px; line-height: 20px; text-align: center; font-weight: bold; text-decoration: none; padding: 20px 25px; min-width: 150px; -webkit-text-size-adjust: none;") Activate account
+        //if mso
+    tr
+      td.table-container(align='left' style="color:#5a5a5a;padding:20px 40px 0 40px;font-family: 'Lato', Arial, Helvetica, sans-serif;font-weight:normal;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;")
+        | P.S. Remember to keep your account secure by following these 
+        a(href='#') password guidelines
+    tr
+      td.table-container(align='left' style="color:#5a5a5a;padding:20px 40px 0 40px;font-family: 'Lato', Arial, Helvetica, sans-serif;font-weight:normal;font-size:14px;-webkit-font-smoothing:antialiased;line-height:1.4;")
+        | If you didn&rsquo;t request this change , you can safely ignore this email and nothing will change.
+table(cellpadding='0' cellspacing='0' border='0' align='center' width='640' style='width: 640px;' role='presentation' bgcolor='#FFFFFF')
+  tr
+    td(height='60' style='line-height:60px;min-height:60px;')
+
+include _support
+include _footer

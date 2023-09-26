@@ -1,0 +1,10 @@
+export enum UserStatuses {
+  ACTIVE= 'ACTIVE',
+  INACTIVE= 'INACTIVE',
+  DEACTIVATED= 'DEACTIVATED'
+}
+
+export enum UserTypes {
+  CONSUMER= 'CONSUMER',
+  CONTRACTOR= 'CONTRACTOR'
+}
