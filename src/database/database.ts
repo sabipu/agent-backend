@@ -6,7 +6,13 @@ const MAIN_DB_URL = process.env.MAIN_DATABASE_URL
 
 export const dataSource = new Sequelize(`${MAIN_DB_URL}`, {
   logging: (msg: any) => logger.debug(msg),
-  models: entities
+  models: entities,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
 })
 
 export async function syncModelToTable() {
