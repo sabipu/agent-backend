@@ -6,6 +6,7 @@ import routes from './routes'
 import { errorHandler } from './errorHandler'
 import { logger } from './logger'
 import { requestLoggerMiddleware } from './requestLoggerMiddleware'
+import { config } from '@/config'
 
 const app = express();
 
@@ -24,13 +25,13 @@ async function bootstrap() {
     app.use(routes)
     app.use(errorHandler)
 
-    // UNHANDLED ROUTES
-    app.all('*', (req: Request, res: Response, next: NextFunction) => {
+    app.all('*', (req: Request, res: Response) => {
       return res.status(500).json({ message: `Route ${req.originalUrl} not found` })
     });
 
-    app.listen(process.env.PORT || 3000, async () => {
-      logger.info(`Backend app listening on port ${process.env.PORT || 3000}`);
+    app.set('PORT', config.PORT)
+    app.listen(app.get('PORT'), async () => {
+      logger.info(`Backend app listening on port ${app.get('PORT')}`)
     });
   } catch (error) {
     logger.error('Express initialization error', error)

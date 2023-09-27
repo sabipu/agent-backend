@@ -26,7 +26,6 @@ pids/
 .DS_Store
 
 # Ignore project-specific files and directories
-config/
 dist/
 coverage/
 
@@ -35,12 +34,6 @@ coverage/
 *.swo
 .DS_Store
 Thumbs.db
-
-# Ignore environment-specific configuration files
-config/*.env
-config/*.json
-config/*.config.js
-config/*.local.js
 
 # Ignore production build files
 build/
