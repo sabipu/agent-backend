@@ -13,8 +13,6 @@ async function authenticateUser(data: any) {
   });
 
   const payload = ticket.getPayload();
-  
-  console.log('payload', payload)
 }
 
 export default {

@@ -1,6 +1,6 @@
 export const config = {
   PORT: process.env.PORT || 3000,
-  DATABASE_URL: process.env.DATABASE_URL,
+  DATABASE_URL: process.env.MAIN_DATABASE_URL,
   EMAIL_SERVICE_INFO: {
     host: process.env.MAILTRAP_HOSTNAME,
     port: process.env.MAILTRAP_PORT,
@@ -8,5 +8,6 @@ export const config = {
       user: process.env.MAILTRAP_AUTH_USERNAME,
       pass: process.env.MAILTRAP_AUTH_PASS
     }
-  }
+  },
+  DATABASE_DIALECT_OPTIONS: {}
 }

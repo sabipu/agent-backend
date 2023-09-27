@@ -1,18 +1,12 @@
 import { Sequelize } from '@sequelize/core';
 import { logger } from '@/server/logger'
 import { entities } from './entities'
+import { config } from '@/config';
 
-const MAIN_DB_URL = process.env.MAIN_DATABASE_URL
-
-export const dataSource = new Sequelize(`${MAIN_DB_URL}`, {
+export const dataSource = new Sequelize(`${config.DATABASE_URL}`, {
   logging: (msg: any) => logger.debug(msg),
   models: entities,
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    }
-  }
+  dialectOptions: config.DATABASE_DIALECT_OPTIONS
 })
 
 export async function syncModelToTable() {

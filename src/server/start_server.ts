@@ -7,6 +7,7 @@ import { errorHandler } from './errorHandler'
 import { logger } from './logger'
 import { requestLoggerMiddleware } from './requestLoggerMiddleware'
 import { config } from '@/config'
+import { initSwagger } from '@/utils/swagger'
 
 const app = express();
 
@@ -25,13 +26,10 @@ async function bootstrap() {
     app.use(routes)
     app.use(errorHandler)
 
-    app.all('*', (req: Request, res: Response) => {
-      return res.status(500).json({ message: `Route ${req.originalUrl} not found` })
-    });
-
     app.set('PORT', config.PORT)
     app.listen(app.get('PORT'), async () => {
       logger.info(`Backend app listening on port ${app.get('PORT')}`)
+      initSwagger(app)
     });
   } catch (error) {
     logger.error('Express initialization error', error)

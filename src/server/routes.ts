@@ -7,7 +7,6 @@ import tokenRouter from '@/modules/tokens/tokens.route'
 const routes = Router()
 
 routes.get('/health', (req: Request, res: Response) => {
-  console.log('Req', req)
   res.json({ status: 'ok' });
 });
 routes.use(authRouter)
