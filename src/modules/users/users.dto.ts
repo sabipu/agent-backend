@@ -1,5 +1,5 @@
 import joi from 'joi'
-import { SortDirection } from '../../common/constant'
+import { SortDirection } from '@/common/constants'
 import { UserStatuses, UserTypes } from './users.constants'
 import { UserSortBy } from './users.type'
 
