@@ -1,7 +1,7 @@
 import { Op } from '@sequelize/core'
 import { SortDirection } from '@/common/constants'
 import { Posts, Posts as postsRepository } from './posts.model'
-import { CreatePostData, FindManyPostQuery, FindManyPostResult, FindOnePostQuery, UpdatePostData, UserSortBy } from './posts.type'
+import { CreatePostData, FindManyPostQuery, FindManyPostResult, FindOnePostQuery, UpdatePostData, PostSortBy } from './posts.type'
 
 async function createPost(data: CreatePostData): Promise<Posts> {
   return await postsRepository.create(data)
@@ -58,7 +58,7 @@ async function findManyPost(query: FindManyPostQuery): Promise<FindManyPostResul
   try {
     const {
       limit = 0,
-      sortBy = UserSortBy.CREATED_AT,
+      sortBy = PostSortBy.CREATED_AT,
       offset = 0,
       sortDirection = SortDirection.DESC,
       title,
