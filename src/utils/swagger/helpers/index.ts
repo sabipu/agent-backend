@@ -27,7 +27,7 @@ type BodyDefinition = {
 
 export type APIDefinition = {
   path: string,
-  method: 'post' | 'get' | 'put' | 'delete' | 'path',
+  method: 'post' | 'get' | 'put' | 'delete' | 'path' | 'patch',
   tag: string
   params?: { [key: string]: ParamDefinition },
   headers?: { [key: string]: HeaderDefinition }

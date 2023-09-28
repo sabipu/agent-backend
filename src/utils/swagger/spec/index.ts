@@ -1,5 +1,7 @@
 import { JsonObject } from 'swagger-ui-express'
 import authSpec from '@/modules/auth/swagger'
+import userSpec from '@/modules/users/swagger'
+import postsSpec from '@/modules/posts/swagger'
 
 const swaggerSpec: JsonObject = {
   openapi: '3.0.0',
@@ -23,7 +25,9 @@ const swaggerSpec: JsonObject = {
         }
       }
     },
-    ...authSpec
+    ...authSpec,
+    ...userSpec,
+    ...postsSpec
   },
 }
 

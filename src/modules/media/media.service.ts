@@ -1,5 +1,5 @@
 import { logger } from '@/server/logger';
-import { ISendEmailData } from './email.types'
+import { ISendEmailData } from './media.types'
 import { renderEmailTemplate, emailTransport } from './helpers'
 
 async function sendEmail(sendEmail: ISendEmailData): Promise<any> {

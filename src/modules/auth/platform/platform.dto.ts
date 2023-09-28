@@ -1,23 +1,34 @@
-import Joi from "joi"
+import joi from "joi"
 
-export const loginWithPlatformDto = Joi.object({
-  body: Joi.object({
-    email: Joi.string().email().required(),
-    password: Joi.string().required()
+export const loginWithPlatformDto = joi.object({
+  body: joi.object({
+    email: joi.string().email().required(),
+    password: joi.string().required()
   })
 }).unknown(true)
 
-export const forgotPasswordWithPlatformDto = Joi.object({
-  body: Joi.object({
-    email: Joi.string().email().required()
+export const forgotPasswordWithPlatformDto = joi.object({
+  body: joi.object({
+    email: joi.string().email().required()
   }).unknown(false)
 }).unknown(true)
 
-export const signupWithPlatformDto = Joi.object({
-  body: Joi.object({
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-    firstName: Joi.string().optional(),
-    lastName: Joi.string().optional()
+export const resetPasswordWithPlatformDto = joi.object({
+  params: joi
+  .object({
+    tokenId: joi.string().required(),
+  }).unknown(false),
+  body: joi.object({
+    password: joi.string().required(),
+    password2: joi.string().required(),
+  }).unknown(false)
+}).unknown(true)
+
+export const signupWithPlatformDto = joi.object({
+  body: joi.object({
+    email: joi.string().email().required(),
+    password: joi.string().required(),
+    firstName: joi.string().optional(),
+    lastName: joi.string().optional()
   })
 }).unknown(true)

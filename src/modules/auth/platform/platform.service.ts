@@ -3,14 +3,12 @@ import authProvidersService from "@/modules/auth_providers/authProviders.service
 import { UserStatuses, UserTypes } from "@/modules/users/users.constants"
 import usersService from "@/modules/users/users.service"
 import { generateJWTLoginTokens } from "../auth.service"
-import { PlatformPayload } from "./platform.type"
-import { PlatformLoginPayload } from "./platform.type"
+import { PlatformLoginPayload, ResetPasswordPayload, PlatformPayload } from "./platform.type"
 import { comparePassword, hashPassword } from "../helpers/password.helper"
 import tokensService from "@/modules/tokens/tokens.service"
 import { TokenTypes } from "@/modules/tokens/tokens.constant"
 import { generateOTP } from "@/utils/utilts"
 import { Tokens } from "@/modules/tokens/tokens.model"
-import { logger } from "@/server/logger"
 import emailService from "@/modules/email/email.service"
 import { AllEmailTemplateTypes } from "@/modules/email/email.types"
 import { EmailSubjectConstants } from "@/modules/email/email.constants"
@@ -132,10 +130,15 @@ async function forgotWithPlatform(email: string) {
   return token
 }
 
+async function resetPasswordWithPlatform(payload: ResetPasswordPayload): Promise<boolean> {
+  return true
+}
+
 
 
 export default {
   loginWithPlatform,
   signupWithPlatform,
-  forgotWithPlatform
+  forgotWithPlatform,
+  resetPasswordWithPlatform
 }

@@ -1,11 +1,11 @@
-import { APIDefinition, generateSwaggerSpec } from '../../utils/swagger/helpers'
+import { APIDefinition, generateSwaggerSpec } from '@/utils/swagger/helpers'
 import { appConfig } from '@/appConfig'
 
 const platformAuthSpecs: APIDefinition[] = [
   {
     path: 'auth/signup',
     method: 'post',
-    tag: 'Authentication',
+    tag: 'Platform Authentication',
     body: {
       email: {
         required: true,
@@ -28,7 +28,7 @@ const platformAuthSpecs: APIDefinition[] = [
   {
     path: 'auth/login',
     method: 'post',
-    tag: 'Authentication',
+    tag: 'Platform Authentication',
     body: {
       email: {
         required: true,
@@ -43,10 +43,30 @@ const platformAuthSpecs: APIDefinition[] = [
   {
     path: 'auth/forgot',
     method: 'post',
-    tag: 'Authentication',
+    tag: 'Platform Authentication',
     body: {
       email: {
         required: true,
+        type: 'string'
+      }
+    }
+  },
+  {
+    path: 'auth/reset-password/{tokenId}',
+    method: 'post',
+    tag: 'Platform Authentication',
+    body: {
+      password: {
+        required: true,
+        type: 'string'
+      },
+      password2: {
+        required: true,
+        type: 'string'
+      }
+    },
+    params: {
+      tokenId: {
         type: 'string'
       }
     }
@@ -88,7 +108,7 @@ const authSpecs: APIDefinition[] = []
 authSpecs.push(...platformAuthSpecs)
 
 if (appConfig.authProviders?.includes('google')) {
-  authSpecs.push(...googleAuthSpecs)
+  // authSpecs.push(...googleAuthSpecs)
 }
 
 export default generateSwaggerSpec(authSpecs)

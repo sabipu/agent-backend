@@ -37,3 +37,15 @@ export async function forgotWithPlatform(request: Request, response: Response, n
     next(error)
   }
 }
+
+export async function resetPasswordWithPlatform(request: Request, response: Response, next: NextFunction) {
+  try {
+    const { password, password2 } = request.body
+    const { tokenId } = request.params
+    const resetPassword = await platformService.resetPasswordWithPlatform({ tokenId, password, password2 })
+
+    return response.json(resetPassword)
+  } catch (error) {
+    next(error)
+  }
+}
